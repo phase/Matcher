@@ -2008,6 +2008,9 @@ class Analysis {
 		while ((in = positionsToTrace.poll()) != null) {
 			int pos = il.indexOf(in);
 			Frame<SourceValue> frame = frames[pos];
+			if (frame == null) {
+				continue;
+			}
 			int stackConsumed = getStackDemand(in, frame);
 
 			for (int i = 0; i < stackConsumed; i++) {

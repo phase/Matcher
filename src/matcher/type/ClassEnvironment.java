@@ -508,6 +508,9 @@ public class ClassEnvironment implements ClassEnv {
 		} else { // determine outer class by outer$inner name pattern
 			for (InnerClassNode icn : cn.innerClasses) {
 				if (icn.name.equals(cn.name)) {
+					if (icn.outerName == null) {
+						return;
+					}
 					addOuterClass(cls, icn.outerName, true);
 					return;
 				}
